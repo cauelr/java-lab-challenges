@@ -10,6 +10,9 @@ public class Candidato {
         this.partido = partido;
         this.intencoesVotos = intencoesVotos;
     }
+    public Candidato(){
+        
+    }
 
     public String getNome(){
         return this.nome;

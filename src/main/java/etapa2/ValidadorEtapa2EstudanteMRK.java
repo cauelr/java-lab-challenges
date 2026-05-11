@@ -1,4 +1,4 @@
-package Etapa2;
+package etapa2;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -41,7 +41,7 @@ public class ValidadorEtapa2EstudanteMRK {
 
         validaClasse("PrincipalCandidatos");
         validaMetodo("PrincipalCandidatos", "main", String[].class);
-        validaChamadasMetodosOrdenacao("src/Etapa2/PrincipalCandidatos.java");
+        validaChamadasMetodosOrdenacao("src/main/java/etapa2/PrincipalCandidatos.java");
 
         System.out.println(ANSI_LARANJA + "+----------------------------------------------------------+" + ANSI_RESET);
         double notaFinal = totalTestes > 0 ? 1.5 * ((double) acertos / totalTestes) : 0.0;
@@ -58,7 +58,7 @@ public class ValidadorEtapa2EstudanteMRK {
 
     private static void validaClasse(String nomeClasse) {
         try {
-            Class.forName("Etapa2." + nomeClasse);
+            Class.forName("etapa2." + nomeClasse);
             System.out.println(formatarMensagem("[OK] Classe " + nomeClasse + " encontrada.", true));
             contabilizaTeste(true);
         } catch (ClassNotFoundException e) {
@@ -69,7 +69,7 @@ public class ValidadorEtapa2EstudanteMRK {
 
     private static void validaMetodo(String nomeClasse, String nomeMetodo, Class<?>... parametros) {
         try {
-            Class<?> classe = Class.forName("Etapa2." + nomeClasse);
+            Class<?> classe = Class.forName("etapa2." + nomeClasse);
             classe.getDeclaredMethod(nomeMetodo, parametros);
             System.out.println(formatarMensagem("[OK] Método " + nomeMetodo + " encontrado.", true));
             contabilizaTeste(true);
@@ -81,7 +81,7 @@ public class ValidadorEtapa2EstudanteMRK {
 
     private static void validaAtributo(String nomeClasse, String nomeAtributo) {
         try {
-            Class<?> classe = Class.forName("Etapa2." + nomeClasse);
+            Class<?> classe = Class.forName("etapa2." + nomeClasse);
             Field campo = classe.getDeclaredField(nomeAtributo);
             System.out.println(formatarMensagem("[OK] Atributo " + nomeAtributo + " encontrado.", true));
             contabilizaTeste(true);
