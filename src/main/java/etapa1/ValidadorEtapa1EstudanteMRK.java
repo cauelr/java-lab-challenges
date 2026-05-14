@@ -15,7 +15,7 @@ public class ValidadorEtapa1EstudanteMRK {
     public static void main(String[] args) {
 
         // Impressão do cabeçalho
-        imprimeLinhaAlinhada("",300);
+        imprimeLinhaAlinhada("", 300);
         imprimeLinhaAlinhada("+---------------------------------------------------------------------------+", 60);
         imprimeLinhaAlinhada("|                Validador Etapa 1 Estudante                                |", 60);
         imprimeLinhaAlinhada("+---------------------------------------------------------------------------+", 60);
@@ -27,15 +27,19 @@ public class ValidadorEtapa1EstudanteMRK {
         Object instanciaLabirinto = criaInstanciaClasse("Labirinto");
 
         // Verifica se o labirinto foi criado com sucesso
-        boolean labirintoCriado = validaExecucaoMetodoComParametro(instanciaLabirinto, "criaLabirinto", "src/main/java/etapa1/labirinto.txt");
+        boolean labirintoCriado = validaExecucaoMetodoComParametro(instanciaLabirinto, "criaLabirinto",
+                "DesafioLabII\\src\\main\\java\\etapa1\\labirinto.txt");
 
         // Só valida percorreLabirinto se o labirinto foi criado com sucesso
         if (labirintoCriado) {
-            System.out.println(ANSI_LARANJA + "[OK] Labirinto foi criado com sucesso. Tentando percorrer o labirinto..." + ANSI_RESET);
+            System.out.println(ANSI_LARANJA + "[OK] Labirinto foi criado com sucesso. Tentando percorrer o labirinto..."
+                    + ANSI_RESET);
             contabilizaTeste(true);
             validaExecucaoMetodo(instanciaLabirinto, "percorreLabirinto");
         } else {
-            System.out.println(ANSI_VERMELHO + "[NOK] O labirinto não foi criado. Verifique se o arquivo labirinto.txt existe no caminho correto." + ANSI_RESET);
+            System.out.println(ANSI_VERMELHO
+                    + "[NOK] O labirinto não foi criado. Verifique se o arquivo labirinto.txt existe no caminho correto."
+                    + ANSI_RESET);
             contabilizaTeste(false);
         }
 
@@ -50,12 +54,16 @@ public class ValidadorEtapa1EstudanteMRK {
         validaTryCatch("Labirinto", "criaLabirinto");
 
         // Impressão da linha de finalização
-        System.out.println(ANSI_LARANJA + "+---------------------------------------------------------------------------+" + ANSI_RESET);
+        System.out.println(ANSI_LARANJA
+                + "+---------------------------------------------------------------------------+" + ANSI_RESET);
         // Cálculo e exibição da nota final
         double notaFinal = totalTestes > 0 ? 1.5 * ((double) acertos / totalTestes) : 0.0;
-        System.out.println(ANSI_LARANJA + "+---------------------------------------------------------------------------+" + ANSI_RESET);
-        System.out.printf(ANSI_LARANJA + "| Nota final: %.2f/1.50 (%d acertos em %d testes) |%n", notaFinal, acertos, totalTestes);
-        System.out.println(ANSI_LARANJA + "+---------------------------------------------------------------------------+" + ANSI_RESET);
+        System.out.println(ANSI_LARANJA
+                + "+---------------------------------------------------------------------------+" + ANSI_RESET);
+        System.out.printf(ANSI_LARANJA + "| Nota final: %.2f/1.50 (%d acertos em %d testes) |%n", notaFinal, acertos,
+                totalTestes);
+        System.out.println(ANSI_LARANJA
+                + "+---------------------------------------------------------------------------+" + ANSI_RESET);
     }
 
     // Método para criar uma instância de uma classe
@@ -64,7 +72,8 @@ public class ValidadorEtapa1EstudanteMRK {
             Class<?> classe = Class.forName("etapa1." + nomeClasse);
             return classe.getDeclaredConstructor().newInstance();
         } catch (Exception e) {
-            System.out.println(ANSI_VERMELHO + "[NOK] Erro ao criar instância da classe " + nomeClasse + ": " + e.getCause() + ANSI_RESET);
+            System.out.println(ANSI_VERMELHO + "[NOK] Erro ao criar instância da classe " + nomeClasse + ": "
+                    + e.getCause() + ANSI_RESET);
             e.printStackTrace();
             return null;
         }
@@ -72,10 +81,12 @@ public class ValidadorEtapa1EstudanteMRK {
 
     private static void contabilizaTeste(boolean sucesso) {
         totalTestes++;
-        if (sucesso) acertos++;
+        if (sucesso)
+            acertos++;
     }
 
-    // Método para validar a execução de um método com parâmetros em uma instância específica
+    // Método para validar a execução de um método com parâmetros em uma instância
+    // específica
     private static boolean validaExecucaoMetodoComParametro(Object instancia, String nomeMetodo, String parametro) {
         try {
             Method metodo = instancia.getClass().getDeclaredMethod(nomeMetodo, String.class);
@@ -84,14 +95,16 @@ public class ValidadorEtapa1EstudanteMRK {
             contabilizaTeste(true);
             return true; // Retorna true se o método foi executado com sucesso
         } catch (Exception e) {
-            System.out.println(ANSI_VERMELHO + "[NOK] Erro ao executar método " + nomeMetodo + ": " + e.getCause() + ANSI_RESET);
+            System.out.println(
+                    ANSI_VERMELHO + "[NOK] Erro ao executar método " + nomeMetodo + ": " + e.getCause() + ANSI_RESET);
             contabilizaTeste(false);
             e.printStackTrace();
             return false; // Retorna false se houve erro
         }
     }
 
-    // Método para validar a execução de um método sem parâmetros em uma instância específica
+    // Método para validar a execução de um método sem parâmetros em uma instância
+    // específica
     private static void validaExecucaoMetodo(Object instancia, String nomeMetodo) {
         try {
             Method metodo = instancia.getClass().getDeclaredMethod(nomeMetodo);
@@ -101,10 +114,12 @@ public class ValidadorEtapa1EstudanteMRK {
                 System.out.println(ANSI_VERDE + "[OK] Método " + nomeMetodo + " executado com sucesso." + ANSI_RESET);
                 contabilizaTeste(true);
             } else {
-                System.out.println(ANSI_VERMELHO + "[NOK] Método " + nomeMetodo + " não encontrou a saída." + ANSI_RESET);
+                System.out
+                        .println(ANSI_VERMELHO + "[NOK] Método " + nomeMetodo + " não encontrou a saída." + ANSI_RESET);
             }
         } catch (Exception e) {
-            System.out.println(ANSI_VERMELHO + "[NOK] Erro ao executar método " + nomeMetodo + ": " + e.getCause() + ANSI_RESET);
+            System.out.println(
+                    ANSI_VERMELHO + "[NOK] Erro ao executar método " + nomeMetodo + ": " + e.getCause() + ANSI_RESET);
             contabilizaTeste(false);
             e.printStackTrace();
         }
@@ -148,7 +163,8 @@ public class ValidadorEtapa1EstudanteMRK {
         }
     }
 
-    // Método para validar a execução da classe PrincipalLabirinto e verificar a mensagem "Solução encontrada"
+    // Método para validar a execução da classe PrincipalLabirinto e verificar a
+    // mensagem "Solução encontrada"
     private static void validaExecucaoClassePrincipal(String nomeClasse, String textoEsperado) {
         try {
             // Captura a saída padrão
@@ -160,7 +176,7 @@ public class ValidadorEtapa1EstudanteMRK {
             // Executa a classe principal
             Class<?> classe = Class.forName("etapa1." + nomeClasse);
             Method metodoMain = classe.getMethod("main", String[].class);
-            metodoMain.invoke(null, (Object) new String[]{});
+            metodoMain.invoke(null, (Object) new String[] {});
 
             // Restaura a saída padrão
             System.out.flush();
@@ -171,11 +187,13 @@ public class ValidadorEtapa1EstudanteMRK {
                 System.out.println(ANSI_VERDE + "[OK] Classe " + nomeClasse + " executada com sucesso." + ANSI_RESET);
                 contabilizaTeste(true);
             } else {
-                System.out.println(ANSI_VERMELHO + "[NOK] Classe " + nomeClasse + " não encontrou a solução." + ANSI_RESET);
+                System.out.println(
+                        ANSI_VERMELHO + "[NOK] Classe " + nomeClasse + " não encontrou a solução." + ANSI_RESET);
                 contabilizaTeste(false);
             }
         } catch (Exception e) {
-            System.out.println(ANSI_VERMELHO + "[NOK] Erro ao executar classe " + nomeClasse + ": " + e.getCause() + ANSI_RESET);
+            System.out.println(
+                    ANSI_VERMELHO + "[NOK] Erro ao executar classe " + nomeClasse + ": " + e.getCause() + ANSI_RESET);
             contabilizaTeste(false);
             e.printStackTrace();
         }
@@ -199,16 +217,19 @@ public class ValidadorEtapa1EstudanteMRK {
             }
 
             if (recursivo) {
-                System.out.println(ANSI_VERDE + "[OK] Método recursivo encontrado na classe " + nomeClasse + "." + ANSI_RESET);
+                System.out.println(
+                        ANSI_VERDE + "[OK] Método recursivo encontrado na classe " + nomeClasse + "." + ANSI_RESET);
                 contabilizaTeste(true);
             } else {
-                System.out.println(ANSI_VERMELHO + "[NOK] Nenhum método recursivo encontrado na classe " + nomeClasse + "." + ANSI_RESET);
+                System.out.println(ANSI_VERMELHO + "[NOK] Nenhum método recursivo encontrado na classe " + nomeClasse
+                        + "." + ANSI_RESET);
             }
         } catch (ClassNotFoundException e) {
             System.out.println(ANSI_VERMELHO + "[NOK] Classe " + nomeClasse + " não encontrada." + ANSI_RESET);
             contabilizaTeste(false);
         } catch (Exception e) {
-            System.out.println(ANSI_VERMELHO + "[NOK] Erro ao verificar recursão na classe " + nomeClasse + ": " + e.getCause() + ANSI_RESET);
+            System.out.println(ANSI_VERMELHO + "[NOK] Erro ao verificar recursão na classe " + nomeClasse + ": "
+                    + e.getCause() + ANSI_RESET);
             contabilizaTeste(false);
             e.printStackTrace();
         }
@@ -223,29 +244,34 @@ public class ValidadorEtapa1EstudanteMRK {
 
             try {
                 metodo.invoke(instancia, "arquivo_inexistente.txt");
-                System.out.println(ANSI_VERMELHO + "[NOK] Método " + nomeMetodo + " deveria ter tratado a exceção." + ANSI_RESET);
+                System.out.println(
+                        ANSI_VERMELHO + "[NOK] Método " + nomeMetodo + " deveria ter tratado a exceção." + ANSI_RESET);
                 contabilizaTeste(false);
             } catch (Exception e) {
                 if (e.getCause() instanceof IllegalArgumentException) {
                     System.out.println(ANSI_VERDE + "[OK] Método " + nomeMetodo + " contém try-catch." + ANSI_RESET);
                     contabilizaTeste(true);
                 } else {
-                    System.out.println(ANSI_VERMELHO + "[NOK] Método " + nomeMetodo + " lançou uma exceção inesperada." + ANSI_RESET);
+                    System.out.println(ANSI_VERMELHO + "[NOK] Método " + nomeMetodo + " lançou uma exceção inesperada."
+                            + ANSI_RESET);
                     contabilizaTeste(false);
                 }
             }
         } catch (NoSuchMethodException e) {
-            System.out.println(ANSI_VERMELHO + "[NOK] Método " + nomeMetodo + " não encontrado na classe " + nomeClasse + "." + ANSI_RESET);
+            System.out.println(ANSI_VERMELHO + "[NOK] Método " + nomeMetodo + " não encontrado na classe " + nomeClasse
+                    + "." + ANSI_RESET);
             contabilizaTeste(false);
         } catch (ClassNotFoundException e) {
             System.out.println(ANSI_VERMELHO + "[NOK] Classe " + nomeClasse + " não encontrada." + ANSI_RESET);
             contabilizaTeste(false);
         } catch (Exception e) {
-            System.out.println(ANSI_VERMELHO + "[NOK] Erro ao validar try-catch no método " + nomeMetodo + ": " + e.getCause() + ANSI_RESET);
+            System.out.println(ANSI_VERMELHO + "[NOK] Erro ao validar try-catch no método " + nomeMetodo + ": "
+                    + e.getCause() + ANSI_RESET);
             contabilizaTeste(false);
             e.printStackTrace();
         }
     }
+
     // Método alinhamento cabecario
     private static void imprimeLinhaAlinhada(String linha, int comprimentoTotal) {
         StringBuilder sb = new StringBuilder(linha);
