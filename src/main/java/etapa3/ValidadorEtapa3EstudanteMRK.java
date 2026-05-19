@@ -38,7 +38,7 @@ public class ValidadorEtapa3EstudanteMRK {
 
         // Verificação segura da interface Stack
         try {
-            Class<?> stackClass = Class.forName("Etapa3.Stack");
+            Class<?> stackClass = Class.forName("etapa3.Stack");
             validaMetodo("Etapa3", "checkBrackets", stackClass);
         } catch (ClassNotFoundException e) {
             System.out.println(formatarMensagem("[NOK] Interface Stack não encontrada.", false));
@@ -60,7 +60,7 @@ public class ValidadorEtapa3EstudanteMRK {
 
     private static void validaClasse(String nomeClasse) {
         try {
-            Class.forName("Etapa3." + nomeClasse);
+            Class.forName("etapa3." + nomeClasse);
             System.out.println(formatarMensagem("[OK] Classe " + nomeClasse + " encontrada.", true));
             contabiliza(true);
         } catch (ClassNotFoundException e) {
@@ -71,7 +71,7 @@ public class ValidadorEtapa3EstudanteMRK {
 
     private static void validaMetodoPublico(String nomeClasse, String nomeMetodo, Class<?>... parametros) {
         try {
-            Class<?> classe = Class.forName("Etapa3." + nomeClasse);
+            Class<?> classe = Class.forName("etapa3." + nomeClasse);
             Method metodo = classe.getDeclaredMethod(nomeMetodo, parametros);
             if (Modifier.isPublic(metodo.getModifiers())) {
                 System.out.println(formatarMensagem("[OK] Método " + nomeMetodo + " (público) encontrado.", true));
@@ -88,7 +88,7 @@ public class ValidadorEtapa3EstudanteMRK {
 
     private static void validaMetodoPrivado(String nomeClasse, String nomeMetodo, Class<?>... parametros) {
         try {
-            Class<?> classe = Class.forName("Etapa3." + nomeClasse);
+            Class<?> classe = Class.forName("etapa3." + nomeClasse);
             Method metodo = classe.getDeclaredMethod(nomeMetodo, parametros);
             if (Modifier.isPrivate(metodo.getModifiers())) {
                 System.out.println(formatarMensagem("[OK] Método " + nomeMetodo + " (privado) encontrado.", true));
@@ -105,7 +105,7 @@ public class ValidadorEtapa3EstudanteMRK {
 
     private static void validaMetodo(String nomeClasse, String nomeMetodo, Class<?>... parametros) {
         try {
-            Class<?> classe = Class.forName("Etapa3." + nomeClasse);
+            Class<?> classe = Class.forName("etapa3." + nomeClasse);
             classe.getDeclaredMethod(nomeMetodo, parametros);
             System.out.println(formatarMensagem("[OK] Método " + nomeMetodo + " encontrado.", true));
             contabiliza(true);
@@ -117,7 +117,7 @@ public class ValidadorEtapa3EstudanteMRK {
 
     private static void validaAtributo(String nomeClasse, String nomeAtributo) {
         try {
-            Class<?> classe = Class.forName("Etapa3." + nomeClasse);
+            Class<?> classe = Class.forName("etapa3." + nomeClasse);
             Field campo = classe.getDeclaredField(nomeAtributo);
             System.out.println(formatarMensagem("[OK] Atributo " + nomeAtributo + " encontrado.", true));
             contabiliza(true);
