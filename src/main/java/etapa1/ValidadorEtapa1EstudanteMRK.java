@@ -28,7 +28,7 @@ public class ValidadorEtapa1EstudanteMRK {
 
         // Verifica se o labirinto foi criado com sucesso
         boolean labirintoCriado = validaExecucaoMetodoComParametro(instanciaLabirinto, "criaLabirinto",
-                "DesafioLabII\\src\\main\\java\\etapa1\\labirinto.txt");
+                "src/main/java/etapa1/labirinto.txt");
 
         // Só valida percorreLabirinto se o labirinto foi criado com sucesso
         if (labirintoCriado) {

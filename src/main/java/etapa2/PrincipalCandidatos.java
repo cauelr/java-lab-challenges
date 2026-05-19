@@ -36,8 +36,8 @@ public class PrincipalCandidatos {
 
         Candidato[] candidatos = new Candidato[tamanho];
 
-        ArrayList<String> nomes = lerArquivo("DesafioLabII\\src\\main\\java\\etapa2\\nomes.txt");
-        ArrayList<String> partidos = lerArquivo("DesafioLabII\\src\\main\\java\\etapa2\\partidos.txt");
+        ArrayList<String> nomes = lerArquivo("src/main/java/etapa2/nomes.txt");
+        ArrayList<String> partidos = lerArquivo("src/main/java/etapa2/partidos.txt");
 
         for (int i = 0; i < tamanho; i++) {
             String nome = nomes.get(random.nextInt(nomes.size())); // Seleciona um nome aleatório com base no tamanho do

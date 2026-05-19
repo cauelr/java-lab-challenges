@@ -41,7 +41,7 @@ public class ValidadorEtapa2EstudanteMRK {
 
         validaClasse("PrincipalCandidatos");
         validaMetodo("PrincipalCandidatos", "main", String[].class);
-        validaChamadasMetodosOrdenacao("DesafioLabII\\src\\main\\java\\etapa2\\PrincipalCandidatos.java");
+        validaChamadasMetodosOrdenacao("src/main/java/etapa2/PrincipalCandidatos.java");
 
         System.out.println(ANSI_LARANJA + "+----------------------------------------------------------+" + ANSI_RESET);
         double notaFinal = totalTestes > 0 ? 1.5 * ((double) acertos / totalTestes) : 0.0;
