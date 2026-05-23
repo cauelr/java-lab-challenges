@@ -52,6 +52,7 @@ public class OrdenarCandidatos {
             int comparacao = arg.compareTo(candidatos[med].getNome()); // Compara o argumento passado com o nome do candidato
 
             if(comparacao == 0){ 
+                while(med > 0 && candidatos[med-1].getNome().equals(arg)) med--; // Garante que retorna a PRIMEIRA ocorrência
                 return med;
             } else if(comparacao < 0){ 
                 sup = med - 1;
