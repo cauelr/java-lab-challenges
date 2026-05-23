@@ -44,32 +44,36 @@ public class PrincipalCandidatos {
                                                                    // ArrayList
             String partido = partidos.get(random.nextInt(partidos.size())); // Seleciona um partido aleatório com base
                                                                             // no tamanho do ArrayList
-            int votos = random.nextInt(1000) + 1; // Cria, de forma aleatória, um número de vótos de 1 a 1000
+            int votos = random.nextInt(1000) + 1; // Cria, de forma aleatória, um número de vótos de 1 a 100
 
             candidatos[i] = new Candidato(nome, partido, votos); // Cria um objeto Candidato.
         }
 
         OrdenarCandidatos.ordenaCandidatosPorPartido(candidatos);
-        for (Candidato c : candidatos) {
-            System.out.println(c);
-        }
-
         OrdenarCandidatos.ordenaCandidatosPorVotos(candidatos);
-        for (Candidato c : candidatos) {
-            System.out.println(c);
-        }
+
+        System.out.println("===========================================================================");
+        System.out.println("         RELATÓRIO DE VOTAÇÃO");
+        System.out.println("Nome                 Partido         Intenções de Votos");
+        System.out.println("===========================================================================");
+        System.out.println("Candidatos ordenados por nome: \n");
 
         OrdenarCandidatos.ordenaCandidatosPorNome(candidatos);
+
         for (Candidato c : candidatos) {
             System.out.println(c);
         }
+
+        System.out.println("Primeiro candidato: " + candidatos[0]);
+        System.out.println("Último candidato: " + candidatos[candidatos.length - 1]);
+        
 
         System.out.println("Pesquise o nome de algum candidato: ");
         Scanner scanner = new Scanner(System.in);
         String nome = scanner.nextLine();
         int resultadoDaPesquisa = OrdenarCandidatos.pesquisaBinariaCandidatos(candidatos, nome);
         if (resultadoDaPesquisa != -1) {
-            System.out.println("Candidato encontrado: " + candidatos[resultadoDaPesquisa]);
+            System.out.println("[OK] Candidato encontrado na posição " + resultadoDaPesquisa +": "  + candidatos[resultadoDaPesquisa]);
         } else {
             System.out.println("Candidato não encontrado!");
         }
